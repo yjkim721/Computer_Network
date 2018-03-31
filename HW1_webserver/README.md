@@ -12,3 +12,8 @@ Develop a simple web server using socket programming.
 - URL format; http://IP_address:portnumber/filename (e.g. http://192.168.0.1:10080/sy.jpg)
 
 ## Development Environment
+Window10, python 3.6
+
+## Excution
+1. run server.py
+2. 
