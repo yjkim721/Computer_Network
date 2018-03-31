@@ -4,7 +4,7 @@
 Develop a simple web server using socket programming.
 
 ### Server
-- Create an HTTP response message consisting of the requested file, and send it to the browser.
+- Create an HTTP response message consisting of the requested file(image or pdf), and send it to the browser.
 - If the browser requests a file that is not present in the web server machine, the web server returns a "404 Not Found" error message.
 
 ### Client
