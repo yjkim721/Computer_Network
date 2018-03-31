@@ -1,5 +1,6 @@
 from socket import *
 import os
+import mimetypes
 
 # parsing request, return request file_name(path) and file_type(type)
 def get_path(msg):
@@ -15,23 +16,15 @@ def get_path(msg):
     return path, type
 
 # making http header
-def make_http_header(exist, type, file_size):
+def make_http_header(exist, extension, file_size):
 
     # set str_status
     if exist:                               # if file exists
         str_status = "200 OK"
+        str_type = mimetypes.types_map.get("."+extension, "application/octet-stream")
     else:                                   # if file does not exist
         str_status = "404 Not Found"
-
-    # set str_type
-    if type == "jpg":
-        str_type = "image/jpeg"
-    elif type == "pdf":
-        str_type = "application/pdf"
-    elif type == "not_exist":
         str_type = "text/plain"
-    else:
-        str_type = ""
 
     # generate http_header using str_status, str_type, and file_size
     http_header = "HTTP/1.0 "+str_status+"\r\nContent-type: "+str_type+"\r\nContent-Length: "+str(file_size)+"\r\n\r\n"
@@ -42,7 +35,7 @@ def make_http_header(exist, type, file_size):
 serverPort = 10080
 serverSocket = socket(AF_INET, SOCK_STREAM)
 serverSocket.bind(('localhost', serverPort))
-serverSocket.listen(5)
+serverSocket.listen(10)
 print('The TCP server is ready to receive.')
 
 # loop for connecting socket
@@ -51,7 +44,7 @@ while True:
     print("Server is connected with client")
     msg = connectionSocket.recv(1024).decode()
 
-    if msg != "":   # error handling for empty message
+    if msg is not "":   # error handling for empty message
         request, type = get_path(msg)
         exist = os.path.isfile(request)
 
