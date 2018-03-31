@@ -16,8 +16,10 @@ Window10, python 3.6
 
 ## Excution
 1. Run server.py
-2. 
+2. Send message in browser, such as
+
 <code>
   http://localhost:10080/puppypoop.pdf  
 </code>
-3. If file exists, it will show in browser. If not, "404 Not Found" will apear.
+
+3. If the requested file exists, it will show in browser. If not, "404 Not Found" will apear.
