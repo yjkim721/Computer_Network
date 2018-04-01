@@ -34,7 +34,7 @@ def make_http_header(exist, extension, file_size):
 # set serverSocket
 serverPort = 10080
 serverSocket = socket(AF_INET, SOCK_STREAM)
-serverSocket.bind(('localhost', serverPort))
+serverSocket.bind(("", serverPort))
 serverSocket.listen(10)
 print('The TCP server is ready to receive.')
 
