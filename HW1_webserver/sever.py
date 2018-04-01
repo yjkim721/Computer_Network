@@ -44,7 +44,7 @@ while True:
     print("Server is connected with client")
     msg = connectionSocket.recv(1024).decode()
 
-    if msg is not "":   # error handling for empty message
+    if msg:   # error handling for empty message
         request, type = get_path(msg)
         exist = os.path.isfile(request)
 
